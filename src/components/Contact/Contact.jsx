@@ -1,15 +1,8 @@
 import css from './Contact.module.css';
 
-export default function Contact({ item, index, contacts, setContacts }) {
+export default function Contact({ item, contacts, setContacts }) {
   function removeItem() {
-    let contactsNew = [];
-    contacts.forEach((element, i) => {
-      if (index === i) {
-        return;
-      }
-      contactsNew.push(element);
-    });
-    setContacts(contactsNew);
+    setContacts(contacts.filter((contact)=>contact!==item));
   }
   return (
     <li className={css.item}>

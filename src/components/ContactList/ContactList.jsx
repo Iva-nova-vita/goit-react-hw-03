@@ -10,7 +10,6 @@ export default function ContactList({ contacts, setContacts }) {
           <Contact
             key={i}
             item={contact}
-            index={i}
             contacts={contacts}
             setContacts={setContacts}
           ></Contact>
