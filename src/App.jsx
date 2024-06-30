@@ -28,7 +28,7 @@ function App() {
         onSubmit={onSubmit}
       ></ContactForm>
 
-      <ContactList contacts={contacts}></ContactList>
+      <ContactList contacts={contacts} setContacts={setContacts}></ContactList>
     </>
   );
 }
