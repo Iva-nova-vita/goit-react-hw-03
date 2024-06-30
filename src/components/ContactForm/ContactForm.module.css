@@ -1,12 +1,8 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
   border: 1px black solid;
   border-radius: 4px;
   padding: 24px;
   width: 300px;
-  align-items: center;
 
   input {
     width: 100%;
@@ -24,4 +20,17 @@
 
 .btnSubmit {
   border: 1px rgb(196, 195, 195) solid;
+}
+
+.wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.errorMessage {
+    color: red;
+    position: absolute;
+    bottom: 0;
+    text-align: left;
 }

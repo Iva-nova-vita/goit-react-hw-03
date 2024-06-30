@@ -10,6 +10,7 @@ function App() {
   const onSubmit = (values, actions) => {
     console.log(values, 'values');
     console.log(actions, 'actions');
+    actions.resetForm()
   };
 
   return (
