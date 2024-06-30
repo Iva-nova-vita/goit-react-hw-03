@@ -1,3 +1,5 @@
+import { FaUser } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa6";
 import css from './Contact.module.css';
 
 export default function Contact({ item, contacts, setContacts }) {
@@ -6,8 +8,8 @@ export default function Contact({ item, contacts, setContacts }) {
   }
   return (
     <li className={css.item}>
-      <div className={css.name}>{item.name}</div>
-      <div className={css.phone}>{item.phone}</div>
+      <div className={css.name}><FaUser/>{item.name}</div>
+      <div className={css.phone}><FaPhone />{item.phone}</div>
       <button className={css.btnDelete} onClick={removeItem}>
         Delete
       </button>

@@ -8,6 +8,10 @@
     text-align: left;
     margin: 24px 24px 24px 0;
     display: inline-block;
+
+    svg {
+        margin-right: 12px;
+    }
 }
 
 .name, .phone {
