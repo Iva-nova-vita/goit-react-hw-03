@@ -1,17 +1,22 @@
 import ContactForm from '../src/components/ContactForm/ContactForm';
 import SearchBox from './components/SearchBox/SearchBox';
 import ContactList from './components/ContactList/ContactList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [contacts, setContacts] = useState([]);
-  // const filter = '';
+  const initialState = () => {
+    return (
+      JSON.parse(localStorage.getItem('contacts')) || []
+    );
+  };
+
+  const [contacts, setContacts] = useState(initialState);
   const [filter, setFilter] = useState('');
-  // useEffect(
-  //   () => localStorage.setItem('feedback', JSON.stringify(feedback)),
-  //   [contacts]
-  // );
+  useEffect(
+    () => localStorage.setItem('contacts', JSON.stringify(contacts)),
+    [contacts]
+  );
 
   const initialValues = {
     name: '',
@@ -19,17 +24,9 @@ function App() {
   };
 
   const onSubmit = (values, actions) => {
-    console.log(values, 'values');
-    console.log(actions, 'actions');
     setContacts([...contacts, values]);
     actions.resetForm();
   };
-
-  // function filter(value) {
-  //   setFilteredContacts(
-  //     contacts.filter((contact) => contact.name.contains(value))
-  //   );
-  // }
 
   return (
     <>
