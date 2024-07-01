@@ -6,23 +6,26 @@ import './App.css';
 
 function App() {
   const initialState = () => {
-    return (
-      JSON.parse(localStorage.getItem('contacts')) || []
-    );
+    return JSON.parse(localStorage.getItem('contacts')) || [];
   };
 
   const [contacts, setContacts] = useState(initialState);
+  function onDelete(item) {
+    setContacts(contacts.filter((contact) => contact !== item));
+  }
+
   const [filter, setFilter] = useState('');
-  const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter));
+  function updateFilter(e) {
+    setFilter(e.target.value.toLowerCase());
+  }
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter)
+  );
 
   useEffect(
     () => localStorage.setItem('contacts', JSON.stringify(contacts)),
     [contacts]
   );
-
-  function onDelete(item) {
-    setContacts(contacts.filter((contact)=>contact!==item));
-  }
 
   const initialValues = {
     name: '',
@@ -40,9 +43,7 @@ function App() {
         initialValues={initialValues}
         onSubmit={onSubmit}
       ></ContactForm>
-      <SearchBox
-        setFilter={setFilter}
-      ></SearchBox>
+      <SearchBox updateFilter={updateFilter}></SearchBox>
       <ContactList
         contacts={filteredContacts}
         onDelete={onDelete}
