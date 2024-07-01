@@ -13,10 +13,16 @@ function App() {
 
   const [contacts, setContacts] = useState(initialState);
   const [filter, setFilter] = useState('');
+  const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter));
+
   useEffect(
     () => localStorage.setItem('contacts', JSON.stringify(contacts)),
     [contacts]
   );
+
+  function onDelete(item) {
+    setContacts(contacts.filter((contact)=>contact!==item));
+  }
 
   const initialValues = {
     name: '',
@@ -38,9 +44,8 @@ function App() {
         setFilter={setFilter}
       ></SearchBox>
       <ContactList
-        contacts={contacts}
-        setContacts={setContacts}
-        filter={filter}
+        contacts={filteredContacts}
+        onDelete={onDelete}
       ></ContactList>
     </>
   );
